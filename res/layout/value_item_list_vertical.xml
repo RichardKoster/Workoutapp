@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:weightSum="9" 
+    android:baselineAligned="false">    
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- icons -->
+        
+	    <LinearLayout 
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="3"
+	        android:orientation="vertical"
+	        >
+	        
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="34dp"
+		        android:orientation="vertical"
+		        android:layout_marginTop="10dp">
+		        
+		        <ImageView 
+			        android:src="@drawable/time_icon"
+			        android:layout_height="wrap_content"
+			        android:layout_width="wrap_content"
+			        android:layout_gravity="center"
+			        android:background="@drawable/value_icon_background"
+			        android:padding="5dp"
+			        />
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="34dp"
+		        android:orientation="vertical"
+		        android:layout_marginTop="10dp">
+		        
+		        <ImageView 
+			        android:src="@drawable/distance_icon"
+			        android:layout_height="wrap_content"
+			        android:layout_width="wrap_content"
+			        android:layout_gravity="center"
+			        android:background="@drawable/value_icon_background"
+			        android:padding="5dp"
+			        />
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="34dp"
+		        android:orientation="vertical"
+		        android:layout_marginTop="10dp">
+		        
+		        <ImageView 
+			        android:src="@drawable/speed_icon"
+			        android:layout_height="wrap_content"
+			        android:layout_width="wrap_content"
+			        android:layout_gravity="center"
+			        android:background="@drawable/value_icon_background"
+			        android:padding="5dp"
+			        />
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="34dp"
+		        android:orientation="vertical"
+		        android:layout_marginTop="10dp">
+		        
+		        <ImageView 
+			        android:src="@drawable/calorie_icon"
+			        android:layout_height="wrap_content"
+			        android:layout_width="wrap_content"
+			        android:layout_gravity="center"
+			        android:background="@drawable/value_icon_background"
+			        android:padding="5dp"
+			        />
+		        
+		    </LinearLayout>
+	    
+	    </LinearLayout>
+	    
+	    <!-- listitems -->
+	    
+	    <LinearLayout 
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="6"
+	        android:orientation="vertical">
+	        
+	        <!-- time -->
+	        
+	        <LinearLayout 
+	            android:layout_width="match_parent"
+	  	 		android:layout_height="34dp"
+	            android:orientation="horizontal"
+	            android:background="@drawable/listitemback"
+	            android:padding="5dp"
+	            android:weightSum="10"
+	            android:layout_marginRight="20dp"
+	            android:layout_marginTop="10dp"
+	            >
+	
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="Time" />
+	
+	            <TextView
+	                android:id="@+id/timeTextView"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center|center_horizontal"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="10:12" />
+	            
+	        </LinearLayout>
+	        
+	        <!-- Distance -->
+	        
+	        <LinearLayout 
+	            android:layout_width="match_parent"
+	  	 		android:layout_height="34dp"
+	            android:orientation="horizontal"
+	            android:background="@drawable/listitemback"
+	            android:padding="5dp"
+	            android:weightSum="10"
+	            android:layout_marginRight="20dp"
+	            android:layout_marginTop="10dp"
+	            >
+	
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="Distance" />
+	
+	            <TextView
+	                android:id="@+id/distanceTextView"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center|center_horizontal"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="2370" />
+	            
+	        </LinearLayout>
+	        
+	        <!-- speed -->
+	        
+	        <LinearLayout 
+	            android:layout_width="match_parent"
+	  	 		android:layout_height="34dp"
+	            android:orientation="horizontal"
+	            android:background="@drawable/listitemback"
+	            android:padding="5dp"
+	            android:weightSum="10"
+	            android:layout_marginRight="20dp"
+	            android:layout_marginTop="10dp"
+	            >
+	
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="Speed" />
+	
+	            <TextView
+	                android:id="@+id/speedTextView"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center|center_horizontal"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="235" />
+	            
+	        </LinearLayout>
+	        
+	        <!-- calorie -->
+	        
+	        <LinearLayout 
+	            android:layout_width="match_parent"
+	  	 		android:layout_height="34dp"
+	            android:orientation="horizontal"
+	            android:background="@drawable/listitemback"
+	            android:padding="5dp"
+	            android:weightSum="10"
+	            android:layout_marginRight="20dp"
+	            android:layout_marginTop="10dp"
+	            >
+	
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="Calories" />
+	
+	            <TextView
+	                android:id="@+id/calorieTextView"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center|center_horizontal"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="207" />
+	            
+	        </LinearLayout>
+	        
+	        <!-- heartrate -->
+	        
+	        <LinearLayout 
+	            android:layout_width="match_parent"
+	  	 		android:layout_height="34dp"
+	            android:orientation="horizontal"
+	            android:background="@drawable/listitemback"
+	            android:padding="5dp"
+	            android:weightSum="10"
+	            android:layout_marginRight="20dp"
+	            android:layout_marginTop="10dp"
+	            >
+	
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="Heart rate" />
+	
+	            <TextView
+	                android:id="@+id/heartrateTextView"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center|center_horizontal"
+	                android:layout_weight="5"
+	                android:gravity="center"
+	                android:text="123" />
+	            
+	        </LinearLayout>
+	        
+	        
+	    </LinearLayout>
+
+    
+    </LinearLayout>
+
+</merge>

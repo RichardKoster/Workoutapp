@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout 
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:weightSum="4"
+        android:layout_margin="5dp">
+        
+        <ImageView 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:src="@drawable/smarcos_logo" />
+        
+        <TextView 
+            android:id="@+id/header_textview"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="Indoor Rower"
+            android:gravity="center"
+            android:textSize="18sp"/>
+        
+        
+    </LinearLayout>
+
+</merge>
