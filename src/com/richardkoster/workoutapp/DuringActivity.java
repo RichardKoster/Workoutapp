@@ -41,6 +41,8 @@ public class DuringActivity extends Activity implements Runnable {
 	TextView calorieTextView;
 	TextView heartrateTextView;
 	String resultString;
+	
+	WorkoutValues wValues;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,12 +58,6 @@ public class DuringActivity extends Activity implements Runnable {
 		TextView headerTV = (TextView)findViewById(R.id.header_textview);
 		
 		adapter = BluetoothAdapter.getDefaultAdapter();
-		
-		if(adapter.getBondedDevices().size() > 0){
-			connected = true;
-			rower = adapter.getRemoteDevice("BD:B2:03:00:55:11");
-			thread.start();
-		}
 		
 		
 		try {
@@ -117,51 +113,27 @@ public class DuringActivity extends Activity implements Runnable {
         listening = true;
 	}
 	
-	public void fillTextFields(String jsonString) throws Exception{
-		
-		timeTextView = (TextView)findViewById(R.id.timeTextView);
-		distanceTextView = (TextView)findViewById(R.id.distanceTextView);
-		speedTextView = (TextView)findViewById(R.id.speedTextView);
-		calorieTextView = (TextView)findViewById(R.id.calorieTextView);
-		heartrateTextView = (TextView)findViewById(R.id.heartrateTextView);
-		
-		JSONObject jsonObject = new JSONObject(jsonString);
-		
-		JSONArray array = new JSONArray();
-		array = jsonObject.getJSONArray("values");
-		int size = array.length();
-		for(int i = 0; i < size; i++){
-			JSONObject values = array.getJSONObject(i);
-			
-			String speed = Integer.toString(values.getInt("speed"));
-			String heartrate = Integer.toString(values.getInt("heartrate"));
-			String calorie = Integer.toString(values.getInt("calorie"));
-			Log.i("values", speed + heartrate + calorie);
-			
-			speedTextView.setText(Integer.toString(values.getInt("speed")));
-			heartrateTextView.setText(Integer.toString(values.getInt("heartrate")));
-			calorieTextView.setText(Integer.toString(values.getInt("calorie")));
-			
+	void getValues(String jsonString, int position){
+		JSONOutput output = new JSONOutput(jsonString);
+		try {
+			 wValues = output.getWorkoutvalues(position);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 	}
 	
-	private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-        	if(msg.getData().getInt("arg1")==1){
-        		try {
-					fillTextFields(resultString);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-        	}
-                
-
-        }
-	};
-
+	void putInTextView(){
+		if(wValues != null){
+			speedTextView = (TextView)findViewById(R.id.speedTextView);
+			speedTextView.setText(Integer.toString(wValues.getSpeed()));
+			calorieTextView = (TextView)findViewById(R.id.calorieTextView);
+			calorieTextView.setText(Integer.toString(wValues.getCalorie()));
+			heartrateTextView = (TextView)findViewById(R.id.heartrateTextView);
+			heartrateTextView.setText(Integer.toString(wValues.getHeartrate()));
+		}
+	}
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -184,10 +156,19 @@ public class DuringActivity extends Activity implements Runnable {
 			resultString = new String (result);
 			Log.d("+++Result", resultString);
 			
-			fillTextFields(resultString);
-			Message msg = new Message();
-			msg.arg1 = 1;
-			handler.sendMessage(msg);
+			getValues(resultString,0);
+			
+			runOnUiThread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					putInTextView();
+					
+				}
+			});
+			
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();

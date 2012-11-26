@@ -13,13 +13,12 @@ public class JSONOutput {
 	private JSONObject object;
 	private JSONArray array;
 	JSONObject detailedobject;
-	Array values;
 	
 	public JSONOutput(String jsonString){
 		this.jsonString = jsonString;
 	}
 	
-	private JSONObject primaryObject(){
+	private JSONArray detailedArray(){
 		
 		try {
 			object = new JSONObject(jsonString);
@@ -27,34 +26,31 @@ public class JSONOutput {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return object;
-	}
-	
-	private JSONArray primaryArray(String arrayName){
-		if(object != null){
-			try {
-				array = primaryObject().getJSONArray(arrayName);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			array = object.getJSONArray("values");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return array;
 	}
 	
-	public Array getValues(int position, String arrayName) throws JSONException{
-		JSONArray detailedarray = primaryArray(arrayName);
+	
+	
+	public WorkoutValues getWorkoutvalues(int position) throws JSONException{
+		JSONArray detailedarray = detailedArray();
 		detailedobject = detailedarray.getJSONObject(position);
+		
+		WorkoutValues wValues = null;
 		
 		if(detailedobject != null){
 			int speed = detailedobject.getInt("speed");
-			
-			values.setInt(values, position, speed) = speed;
-			
-			
+			int calorie = detailedobject.getInt("calorie");
+			int heartRate = detailedobject.getInt("heartrate");
+			wValues = new WorkoutValues(speed, calorie, heartRate);
 		}
 		
-		return values;
+		return wValues;
 	}
 	
 	
